@@ -1,0 +1,103 @@
+<%-include ("partials/header") -%>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="/css/display.css">
+<link rel="stylesheet" href="/css/card.css">
+<section class="section-products">
+  <div class="container">
+    <div class="row">
+        <% items_array.forEach((items)=>{%>
+          <div class="col-md-6 col-lg-4 col-xl-3">
+            <div id="product-4" class="single-product">
+              <div class="part-1">
+                <img src="<%= items.images.fileurl%>" alt="" 
+                style="width: 350px;
+                height: 350px;
+                object-fit: contain;
+                transition: all 0.3s; background: no-repeat;
+                filter: saturate(150%) contrast(120%) hue-rotate(10deg) drop-shadow(10px 20px 10px rgba(68, 65, 65, 0.3));">
+                <ul>
+                  <li><a href="/cart"><i class="fas fa-shopping-cart"></i></a></li>
+                  <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                  <li><a data-bs-toggle="modal" data-bs-target="#<%=items.product.split(" ").join("-")%>"><i class="fas fa-expand"></i></a></li>
+                </ul>
+              </div>
+                <div class="part-2">
+                    <h3 class="company-title"><%= items.company %></h2>
+                    <h3 class="product-title"><%= items.product %></h3>
+                    <h4 class="product-price">Rs. <%= items.sellPrice %></h4>
+                </div>
+            </div>
+          </div>
+          <div class="modal fade" id="<%=items.product.split(" ").join("-")%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <section class="product">
+                    <div class="product__photo">
+                      <div class="photo-container">
+                        <div class="photo-main">
+                          <div class="controls">
+                            <i class="material-icons">share</i>
+                            <i class="material-icons">favorite_border</i>
+                          </div>
+                          <img src="<%= items.images.fileurl%>" alt="green apple slice">
+                        </div>
+                        <!-- <div class="photo-album">
+                          <ul>
+                            <li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537302064/codepen/delicious-apples/green-apple2.png" alt="green apple"></li>
+                            <li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537303532/codepen/delicious-apples/half-apple.png" alt="half apple"></li>
+                            <li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537303160/codepen/delicious-apples/green-apple-flipped.png" alt="green apple"></li>
+                            <li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537303708/codepen/delicious-apples/apple-top.png" alt="apple top"></li>
+                          </ul>
+                        </div> -->
+                      </div>
+                    </div>
+                    <div class="product__info">
+                      <div class="title">
+                        <h1><%= items.product %></h1>
+                        <br>
+                        <h4 style ="background-color: azure;"><%= items.company %></h4>
+                        
+                        <% if(typeof items.suitableFor != 'undefined') {%>
+                        <br>
+                        Suitable For : 
+                        <span class = "s1"><%= items.suitableFor %></span>
+                        <%}%>
+                        
+                        <% if(typeof items.material != 'undefined') {%>
+                        <br>
+                        Material : 
+                        <span class = "s1"><%= items.material %></span>
+                        <%}%>
+
+                        <% if(typeof items.length != 'undefined') {%>
+                          <br>
+                          Dimensions : 
+                          <span class = "s1"><%= items.length%>x<%= items.width %>x<%= items.height %></span>
+                          <%}%>
+
+                      </div>
+                      <div class="price">
+                        Rs <span><%= items.sellPrice %></span>
+                      </div>
+                      <div class="description">
+                        <h3>DESCRIPTION</h3>
+                        <% let desc = items.description.replace(/(?:\r\n|\r|\n)/g, '<br>');%>
+                        <%- desc %>
+                      </div>
+                      <button class="buy--btn">ADD TO CART</button>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+          <%})%>
+      </div> 
+  </div>
+</section>
+
+<%-include ("partials/footer")-%>

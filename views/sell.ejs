@@ -1,0 +1,182 @@
+<%-include ("partials/header") -%>
+<link rel="stylesheet" href="/css/sell.css" />
+<div class="form-body">
+  <div class="row">
+    <div class="form-holder">
+      <div class="form-content">
+        <div class="form-items">
+          <h3 style="text-align: center">Enter Details of Selling Product</h3>
+          <form
+            class=""
+            action="/sell"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <div class="col-md-12">
+              <label for="product" class="form-label">Name of product</label>
+              <input type="text" class="form-control" name="product" required />
+            </div>
+            <div class="col-md-12">
+              <label for="company" class="form-label"
+                >Company or Writer name</label
+              >
+              <input type="text" class="form-control" name="company" required />
+            </div>
+            <div class="col-md-5" id="sellprice">
+              <label for="sellPrice" class="form-label">Sell Price</label>
+              <input
+                type="number"
+                class="form-control"
+                min="0"
+                step="any"
+                name="sellPrice"
+                required
+              />
+            </div>
+            <div class="col-md-5" id="originalprice">
+              <label for="originalPrice" class="form-label"
+                >Original Price</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                min="0"
+                step="any"
+                name="originalPrice"
+              />
+            </div>
+
+            <div class="col-md-12">
+              <label for="category" class="form-label">Select a Category</label>
+              <select
+                class="form-select form-control mt-3"
+                id="category"
+                name="category"
+                onchange="showForm()"
+                required
+              >
+                <option value="disabled hidden">Choose here</option>
+                <option value="cycle">Cycle</option>
+                <option value="mattress">Mattress</option>
+                <option value="books">Books</option>
+                <option value="electrical">Electrical Appliances</option>
+                <option value="others">Others</option>
+              </select>
+            </div>
+
+            <div id="cycle" style="display: none">
+              <div class="col-md-12">
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="suitableFor"
+                    value="male"
+                  />
+                  <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="suitableFor"
+                    value="female"
+                  />
+                  <label class="form-check-label" for="female">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="suitableFor"
+                    value="unisex"
+                  />
+                  <label class="form-check-label" for="unisex">Unisex</label>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <label for="color" class="form-label">Color</label>
+                <input type="color" class="form-control" name="color" />
+              </div>
+            </div>
+
+            <div id="mattress" style="display: none">
+              <div class="col-md-12">
+                <label for="material" class="form-label"> Material</label>
+                <select
+                  class="form-select form-control mt-3"
+                  name="material"
+                  required
+                >
+                  <option value="jute">Jute</option>
+                  <option value="cotton">Cotton</option>
+                  <option value="ortho">Ortho</option>
+                  <option value="other">other</option>
+                </select>
+              </div>
+
+              <div class="col-md-12">
+                <label for="len" class="form-label">Length</label>
+                <input type="number" class="form-control" name="len" />
+              </div>
+              <div class="col-md-12">
+                <label for="wt" class="form-label">Width</label>
+                <input type="number" class="form-control" name="wt" />
+              </div>
+              <div class="col-md-12">
+                <label for="ht" class="form-label">Height</label>
+                <input type="number" class="form-control" name="ht" />
+              </div>
+            </div>
+
+            <div id="books" style="display: none">
+              <div class="col-md-12">
+                <label for="bookType" class="form-label"> Book Type</label>
+                <select
+                  class="form-select form-control mt-3"
+                  name="bookType"
+                  required
+                >
+                  <option value="paperback">Paperback</option>
+                  <option value="hardcover">Hardcover</option>
+                </select>
+              </div>
+              <div class="col-md-12">
+                <label for="genre" class="form-label">Genre</label>
+                <input type="text" class="form-control" name="genre" />
+              </div>
+              <div class="col-md-12">
+                <label for="edition" class="form-label">Edition</label>
+                <input type="text" class="form-control" name="edition" />
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <label for="description" class="form-label">Description</label>
+              <textarea name="description" class="form-control"></textarea>
+            </div>
+
+            <div class="col-md-12">
+              <label for="item_image" class="form-label">Select Images</label>
+              <input
+                type="file"
+                name="item_image"
+                class="form-control"
+                accept=".png, .jpeg, .jpg,"
+                required
+              />
+            </div>
+
+            <div class="form-button mt-3">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/category.js"></script>
+
+<%-include ("partials/footer") -%>

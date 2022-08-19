@@ -1,0 +1,56 @@
+<%-include ("partials/header") -%>
+
+<div id="main">
+  <main class="form-signin">
+    <form action="/signup" method="post">
+      <h1 class="h3 mb-3 fw-normal" style="text-align: center">Sign-up Here</h1>
+      <input
+        type="text"
+        name="name"
+        class="form-control top"
+        placeholder="Name"
+        autofocus
+        required
+      />
+      <input
+        type="text"
+        name="rollNumber"
+        class="form-control top"
+        placeholder="Roll Number"
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        class="form-control middle"
+        placeholder="Email"
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        class="form-control middle"
+        placeholder="Password"
+        required
+      />
+      <input
+        type="tel"
+        name="phone"
+        pattern="[0-9]{10}"
+        class="form-control bottom"
+        placeholder="Phone Number"
+        required
+      />
+
+      <br />
+      <p>
+        Already have a account? <a href="/login" id="signup">Sign-in</a> here!
+      </p>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">
+        Sign Me up!
+      </button>
+    </form>
+  </main>
+</div>
+
+<%-include ("partials/footer") -%>

@@ -1,0 +1,55 @@
+<%-include ("partials/header") -%>
+
+<div id="main">
+  <main class="form-signin">
+    <form action="/login" method="post">
+      <h1 class="h3 mb-3 fw-normal" style="text-align: center">Log-in Here</h1>
+      <% if(loginfo == -1) {%>
+      <div class="success">Already Logged in!</div>
+      <% } else { if(loginfo == 0) { %>
+      <div class="alert">
+        <span
+          class="closebtn"
+          onclick="this.parentElement.style.display='none';"
+          >&times;</span
+        >
+        Wrong Roll Number or Password.
+      </div>
+      <% } else if(loginfo == -1) {%>
+      <div class="success">Already Logged in!</div>
+      <% } else if(loginfo == 2) {%>
+      <div class="warning">
+        <span
+          class="closebtn"
+          onclick="this.parentElement.style.display='none';"
+          >&times;</span
+        >
+        First login before selling any item!
+      </div>
+      <% }%>
+      <input
+        type="text"
+        name="rollNumber"
+        class="form-control top"
+        placeholder="Roll Number"
+        required
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        class="form-control bottom"
+        placeholder="Password"
+        required
+      />
+      <br />
+      <p>
+        Don't have an account <a href="/signup" id="login">Sign-up</a> here!
+      </p>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Login!</button>
+    </form>
+    <% }%>
+  </main>
+</div>
+
+<%-include ("partials/footer") -%>
